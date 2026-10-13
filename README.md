@@ -47,6 +47,10 @@ on Windows, `./dev.sh <target>` elsewhere.
 
 Start the local database with `docker compose up -d db`.
 
+The development server is published on host port 3000. If that port is already
+taken, set `WEB_PORT` in `.env` to something else; the container always serves
+on 3000 internally.
+
 ## Repository layout
 
 ```
