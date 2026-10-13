@@ -1,7 +1,7 @@
 # Single development image: Python 3.12 (ETL) + Node 22 (web) + make.
 # Rationale: one toolchain for both stacks so no language runtime is installed
 # on the host. See docs/adr/0002-containerised-development-environment.md.
-FROM python:3.12-bookworm
+FROM python:3.14-bookworm
 
 ARG USERNAME=dev
 ARG USER_UID=1000
