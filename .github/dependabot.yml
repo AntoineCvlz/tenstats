@@ -6,6 +6,10 @@ updates:
       interval: weekly
     commit-message:
       prefix: "chore(deps)"
+    groups:
+      etl-dev:
+        patterns: ["*"]
+        update-types: [minor, patch]
 
   - package-ecosystem: npm
     directory: /web
@@ -13,6 +17,14 @@ updates:
       interval: weekly
     commit-message:
       prefix: "chore(deps)"
+    ignore:
+      # Must track the Node major used by the container and by CI.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+    groups:
+      web-dev:
+        patterns: ["*"]
+        update-types: [minor, patch]
 
   - package-ecosystem: npm
     directory: /
@@ -20,6 +32,10 @@ updates:
       interval: weekly
     commit-message:
       prefix: "chore(deps)"
+    groups:
+      tooling:
+        patterns: ["*"]
+        update-types: [minor, patch]
 
   - package-ecosystem: github-actions
     directory: /
@@ -27,6 +43,9 @@ updates:
       interval: weekly
     commit-message:
       prefix: "ci(deps)"
+    groups:
+      actions:
+        patterns: ["*"]
 
   - package-ecosystem: docker
     directory: /.devcontainer
@@ -34,3 +53,10 @@ updates:
       interval: weekly
     commit-message:
       prefix: "chore(deps)"
+    ignore:
+      # The project targets Python 3.12 (.python-version, requires-python).
+      # Moving major or minor is a deliberate migration, not a dependency bump.
+      - dependency-name: "python"
+        update-types:
+          - "version-update:semver-major"
+          - "version-update:semver-minor"
