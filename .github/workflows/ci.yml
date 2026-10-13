@@ -2,6 +2,10 @@ name: CI
 
 on:
   pull_request:
+    # `edited` matters because the pull request title is linted below: a title
+    # fixed after the first run must re-trigger the workflow. Re-running a job
+    # replays the original event payload and would keep the stale title.
+    types: [opened, synchronize, reopened, edited]
   push:
     branches: [main]
 
