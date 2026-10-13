@@ -1,0 +1,6 @@
+# esbuild (vitest dependency) ships a prebuilt binary and needs its install
+# script; sharp and unrs-resolver are not used and stay disabled.
+allowBuilds:
+  esbuild: true
+  sharp: false
+  unrs-resolver: false

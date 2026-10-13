@@ -1,0 +1,50 @@
+name: tenstats
+
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-tenstats}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-tenstats}
+      POSTGRES_DB: ${POSTGRES_DB:-tenstats}
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-tenstats} -d ${POSTGRES_DB:-tenstats}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  dev:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+    init: true
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-tenstats}:${POSTGRES_PASSWORD:-tenstats}@db:5432/${POSTGRES_DB:-tenstats}
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/workspace
+      # Dependency trees stay in the container: native builds must not be
+      # written back to the Windows host bind mount.
+      - etl-venv:/workspace/etl/.venv
+      - web-node-modules:/workspace/web/node_modules
+      - dev-cache:/home/dev/.cache
+      - pnpm-store:/home/dev/.local/share/pnpm
+    depends_on:
+      db:
+        condition: service_healthy
+    command: ["sleep", "infinity"]
+
+volumes:
+  db-data:
+  etl-venv:
+  web-node-modules:
+  dev-cache:
+  pnpm-store:

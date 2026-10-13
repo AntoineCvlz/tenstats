@@ -1,0 +1,11 @@
+# Secret scanning configuration. The default rule set is used as-is; only
+# false positives specific to this repository are allowlisted.
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Local development credentials, intentionally public"
+paths = [
+  '''\.env\.example$''',
+  '''docker-compose\.yml$''',
+]

@@ -1,0 +1,31 @@
+{
+  "name": "tenstats",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Tooling root: git hooks and commit linting. The application lives in web/ and etl/.",
+  "scripts": {
+    "prepare": "husky",
+    "commitlint": "commitlint --edit"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20",
+    "@commitlint/config-conventional": "^20",
+    "husky": "^9",
+    "lint-staged": "^16"
+  },
+  "lint-staged": {
+    "etl/**/*.py": [
+      "uv run --project etl ruff check --force-exclude --fix",
+      "uv run --project etl ruff format --force-exclude"
+    ],
+    "web/**/*.{ts,tsx,mjs}": [
+      "pnpm --dir web exec eslint --fix",
+      "pnpm --dir web exec prettier --write"
+    ],
+    "web/**/*.{css,json,md}": [
+      "pnpm --dir web exec prettier --write"
+    ]
+  },
+  "packageManager": "pnpm@12.11.2"
+}
