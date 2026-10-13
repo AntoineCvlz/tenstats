@@ -22,7 +22,7 @@ Everything runs in Docker: the host needs only **Docker** and **Git**.
 ## Getting started
 
 ```sh
-git clone <repository-url> tenstats
+git clone https://github.com/AntoineCvlz/tenstats.git
 cd tenstats
 cp .env.example .env
 docker compose build dev
