@@ -6,7 +6,7 @@ En cas de conflit entre une instruction ponctuelle et ce fichier, signale le con
 ## 1. Contexte
 
 Site personnel d'analyse de données de tennis (ATP/WTA), en ligne, sans utilisateurs réels.
-Données : dépôts de Jeff Sackmann (`tennis_atp`, `tennis_wta`), licence CC BY-NC-SA 4.0 (non commercial, attribution obligatoire).
+Données : mirror `Aneeshers/tennis-sackmann-archive` des dépôts de Jeff Sackmann (`tennis_atp`, `tennis_wta` — les dépôts originaux sont en 404 depuis 2026-10-13, voir [ADR 0003](docs/adr/0003-switch-data-source-to-archive-mirror.md)), licence CC BY-NC-SA 4.0 (non commercial, attribution obligatoire envers Sackmann et le mirror).
 
 | Couche | Choix |
 |---|---|

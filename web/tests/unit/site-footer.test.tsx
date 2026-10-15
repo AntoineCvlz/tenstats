@@ -12,6 +12,15 @@ describe("SiteFooter", () => {
     );
   });
 
+  it("credits the archive mirror", () => {
+    render(<SiteFooter />);
+
+    expect(screen.getByRole("link", { name: /aneeshers archive mirror/i })).toHaveAttribute(
+      "href",
+      "https://github.com/Aneeshers/tennis-sackmann-archive",
+    );
+  });
+
   it("states the licence", () => {
     render(<SiteFooter />);
 

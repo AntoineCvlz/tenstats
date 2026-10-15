@@ -3,7 +3,7 @@
 ## Data flow
 
 ```
-Jeff Sackmann CSV repositories
+Aneeshers/tennis-sackmann-archive (mirror, see ADR 0003)
         │  (download, phase 1)
         ▼
     data/ (raw CSV, git-ignored, reproducible)

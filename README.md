@@ -66,9 +66,12 @@ See [docs/architecture.md](docs/architecture.md).
 
 ## Data and licence
 
-Match, ranking and player data come from Jeff Sackmann's
-[tennis datasets](https://github.com/JeffSackmann) (`tennis_atp`,
-`tennis_wta`), licensed under
+Match, ranking and player data originate from Jeff Sackmann's tennis
+datasets. His original repositories (`tennis_atp`, `tennis_wta`) have
+returned 404 since 2026-10-13, so the pipeline sources from the
+[Aneeshers/tennis-sackmann-archive](https://github.com/Aneeshers/tennis-sackmann-archive)
+mirror instead (see [ADR 0003](docs/adr/0003-switch-data-source-to-archive-mirror.md)).
+Licensed under
 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).
 Use is **non-commercial** and the attribution is displayed in the site footer.
 
