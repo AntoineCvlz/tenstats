@@ -36,7 +36,7 @@
     "eslint-config-next": "16.4.0",
     "eslint-config-prettier": "^10",
     "eslint-plugin-sonarjs": "^4",
-    "jsdom": "^27",
+    "jsdom": "^30",
     "prettier": "^3",
     "prettier-plugin-tailwindcss": "^0.8",
     "tailwindcss": "^4",
